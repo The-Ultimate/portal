@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript"
+
+src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+<div ng-controller="appControl">
+  <center><h1>The Ultimate - Downloadserver</h1></center>
+
+  <ul>
+      <li ng-repeat="target in targets">
+        <a href="{{target.url}}">{{target.name}}</a>
+      </li>
+    </ul>
+</div>
+
+<script type="application/javascript">
+  angular.module('app', []).controller('appControl', function ($scope) {
+    var root;
+    var indexOf = location.host.indexOf(":");
+    if (indexOf>0) {
+      root = location.protocol + '//' + location.host.substr(0, indexOf);
+    } else {
+      root = location.protocol + '//' + location.host;
+    }
+
+    $scope.targets = [
+      {
+        "name": "Spotweb",
+        "url": root + ":10000"
+      },
+      {
+        "name": "Sabnzbd",
+        "url": root + ":9200"
+      },
+      {
+        "name": "Sickrage",
+        "url": root + ":9400"
+      },
+      {
+        "name": "Couchpotato",
+        "url": root + ":9500"
+      },
+      {
+        "name": "Headphones",
+        "url": root + ":9600"
+      },
+      {
+        "name": "LazyLibrarian",
+        "url": root + ":9700"
+      }
+    ];
+  })
+</script>
+</body>
+</html>
